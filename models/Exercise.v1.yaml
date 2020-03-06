@@ -1,0 +1,7 @@
+title: Exercise
+type: object
+properties:
+  _id:
+    type: string
+  '':
+    type: string

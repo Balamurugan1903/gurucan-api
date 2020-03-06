@@ -7,7 +7,9 @@ info:
     email: dmitrii@gurucan.com
 servers:
   - url: 'https://{domain}.gurucan.com/api/'
-    description: ''
+    description: "Your school's endpoint"
+  - url: 'https://app.gurucan.com/api/'
+    description: Login endpoint
 paths:
   /admin/login:
     post:
