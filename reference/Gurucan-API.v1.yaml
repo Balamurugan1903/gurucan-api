@@ -11,7 +11,7 @@ servers:
 paths:
   /admin/login:
     post:
-      summary: Login. to admin panel
+      summary: Login to admin panel
       tags: []
       responses:
         '200':
@@ -57,21 +57,21 @@ paths:
     parameters: []
   /admin/reports:
     get:
-      summary: Your GET endpoint
+      summary: Get reports
       tags: []
       responses: {}
       operationId: get-admin-reports
       description: Get reports
   /admin/payments:
     get:
-      summary: Your GET endpoint
+      summary: Get payments
       tags: []
       responses: {}
       operationId: get-admin-payments
       description: Get all payyments
   /admin/users:
     post:
-      summary: ''
+      summary: Create user
       operationId: post-admin-users
       responses:
         '200':
@@ -116,7 +116,7 @@ paths:
         description: ''
       description: Creates a user. If email is set in admin panel – new user get an email on creation.
     get:
-      summary: ''
+      summary: Get users
       operationId: get-admin-users
       responses:
         '200':
@@ -155,7 +155,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get user
       tags: []
       responses:
         '200':
@@ -174,7 +174,7 @@ paths:
       operationId: get-admin-users-id
       description: Get a single user by ID
     post:
-      summary: ''
+      summary: Edit user
       operationId: post-admin-users-id
       responses:
         '200':
@@ -202,7 +202,7 @@ paths:
         in: path
         required: true
     post:
-      summary: ''
+      summary: Delete a message
       operationId: post-admin-messages-id-delete
       responses:
         '200':
