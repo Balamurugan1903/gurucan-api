@@ -1,0 +1,13 @@
+openapi: 3.0.0
+info:
+  title: Gurucan API
+  version: '1.0'
+  contact:
+    name: Dmitrii
+    email: dmitrii@gurucan.com
+servers:
+  - url: 'https://{$$.env.domain}.gurucan.com/api'
+    description: Gurucan API
+paths: {}
+components:
+  schemas: {}
