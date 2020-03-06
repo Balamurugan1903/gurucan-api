@@ -8,6 +8,56 @@ info:
 servers:
   - url: 'https://{$$.env.domain}.gurucan.com/api'
     description: Gurucan API
-paths: {}
+paths:
+  /admin/login:
+    post:
+      summary: Login. to admin panel
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                      - ok
+                  me:
+                    $ref: ../models/User.v1.yaml
+                  jwt_token:
+                    type: string
+              examples:
+                example-1: {}
+          headers: {}
+      operationId: post-admin-login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: admin email
+                password:
+                  type: string
+                  description: |
+                    Admin password
+                domain:
+                  type: string
+                  description: You school domain
+              required:
+                - email
+                - password
+                - domain
 components:
   schemas: {}
+  securitySchemes:
+    jwt_token:
+      name: '{$$.env.jwt_token}'
+      type: apiKey
+      in: header
+      description: "You'll get this token after login"

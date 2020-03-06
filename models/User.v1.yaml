@@ -1,0 +1,63 @@
+title: User
+type: object
+x-examples:
+  example-1: {}
+properties:
+  _id:
+    type: string
+  email:
+    type: string
+    format: email
+  phone:
+    type: string
+    example: Phone in 79999999999 format
+  username:
+    type: string
+  tags:
+    type: array
+    items:
+      $ref: ''
+  status:
+    type: string
+    enum:
+      - validated
+      - not_validated
+    example: Email validation status
+  createdAt:
+    type: string
+    format: date
+  updatedAt:
+    type: string
+    format: date
+  purchasedItems:
+    type: array
+    items:
+      type: object
+      properties:
+        meta:
+          type:
+            - string
+            - object
+        module:
+          type: string
+        refPath:
+          type: string
+        _id:
+          type: string
+  meta:
+    type: object
+  city:
+    type: string
+  instagram:
+    type: string
+  birthDate:
+    type: string
+    format: date
+  last_online:
+    type: string
+    format: date
+  visit_count:
+    type: integer
+required:
+  - _id
+  - email
