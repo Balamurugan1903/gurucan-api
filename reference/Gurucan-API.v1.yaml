@@ -6,8 +6,8 @@ info:
     name: Dmitrii
     email: dmitrii@gurucan.com
 servers:
-  - url: 'https://{$$.env.domain}.gurucan.com/api'
-    description: Gurucan API
+  - url: 'https://{domain}.gurucan.com/api/'
+    description: ''
 paths:
   /admin/login:
     post:
@@ -53,6 +53,171 @@ paths:
                 - email
                 - password
                 - domain
+      description: Log administrator in
+    parameters: []
+  /admin/reports:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-admin-reports
+      description: Get reports
+  /admin/payments:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-admin-payments
+      description: Get all payyments
+  /admin/users:
+    post:
+      summary: ''
+      operationId: post-admin-users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                      - ok
+                  user:
+                    $ref: ../models/User.v1.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: user email
+                role:
+                  type: string
+                  description: 'User role. Default role is "user"'
+                  enum:
+                    - user
+                    - curator
+                    - owner
+                    - editor
+                password:
+                  type: string
+                  description: "User password. Is automatically generated if it's not passed."
+              required:
+                - email
+            examples:
+              example:
+                value:
+                  email: test@test.com
+        description: ''
+      description: Creates a user. If email is set in admin panel – new user get an email on creation.
+    get:
+      summary: ''
+      operationId: get-admin-users
+      responses:
+        '200':
+          description: OK
+      description: "Get your school's users"
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+        description: ''
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: page
+          description: Each page is 20 items long
+        - schema:
+            type: string
+          in: query
+          name: search
+          description: |
+            Search query
+        - schema:
+            type: string
+          in: query
+          name: filters
+          description: |
+            Not documented yet
+  '/admin/users/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                      - ok
+                  user:
+                    $ref: ../models/User.v1.yaml
+      operationId: get-admin-users-id
+      description: Get a single user by ID
+    post:
+      summary: ''
+      operationId: post-admin-users-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                      - ok
+      description: Edit user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ''
+  '/admin/messages/{id}/delete':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-admin-messages-id-delete
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                      - ok
+      description: Delete a chat message
+      requestBody: {}
 components:
   schemas: {}
   securitySchemes:

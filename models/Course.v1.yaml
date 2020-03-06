@@ -1,0 +1,48 @@
+title: Course
+type: object
+properties:
+  _id:
+    type: string
+  influencer:
+    $ref: ./Influencer.v1.yaml
+  title:
+    type: string
+  description:
+    type: string
+  fullDescription:
+    type: string
+  img:
+    type: string
+  tags:
+    type: array
+    items:
+      $ref: ./Tag.v1.yaml
+  badge:
+    type: string
+  isFree:
+    type: boolean
+  freeTasks:
+    type: integer
+  exercises:
+    type: array
+    items: {}
+  chat:
+    $ref: ./Chat.v1.yaml
+  status:
+    type: string
+    enum:
+      - deleted
+      - published
+      - draft
+  type:
+    type: string
+    enum:
+      - course
+      - marathon
+      - menu
+  meta:
+    type: object
+  startEmail:
+    $ref: ./Email.v1.yaml
+  paymentEmail:
+    $ref: ./Email.v1.yaml

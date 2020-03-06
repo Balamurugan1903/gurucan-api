@@ -1,0 +1,8 @@
+title: Influencer
+type: object
+description: Influencer is the model of your school. It containes everything related to your online school.
+properties:
+  _id:
+    type: string
+  '':
+    type: string

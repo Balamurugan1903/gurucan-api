@@ -58,6 +58,8 @@ properties:
     format: date
   visit_count:
     type: integer
+  influencer:
+    $ref: ./Influencer.v1.yaml
 required:
   - _id
   - email

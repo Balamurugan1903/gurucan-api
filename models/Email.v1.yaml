@@ -1,0 +1,5 @@
+title: Email
+type: object
+properties:
+  _id:
+    type: string
