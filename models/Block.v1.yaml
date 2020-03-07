@@ -1,6 +1,23 @@
 title: Block
 type: object
-properties:
-  id:
-    type: string
 description: "A block is a basically a building block of all the content you've got on Gurucan."
+properties:
+  type:
+    type: string
+  data:
+    type: object
+  meta_data:
+    type:
+      - string
+      - object
+  status:
+    type: string
+    default: done
+  createdAt:
+    type: string
+    format: date
+  updatedAt:
+    type: string
+    format: date
+  '':
+    type: string

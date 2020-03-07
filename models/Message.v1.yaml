@@ -1,6 +1,31 @@
 title: Message
 type: object
+description: A message is used in chats as well as in Reports.
 properties:
-  id:
+  _id:
     type: string
-description: ''
+  influencer:
+    $ref: ./Influencer.v1.yaml
+  chat:
+    $ref: ./Chat.v1.yaml
+  user:
+    $ref: ./User.v1.yaml
+  text:
+    type: string
+  attachments:
+    type: array
+    items:
+      type: object
+  isDeleted:
+    type: boolean
+  createdAt:
+    type: string
+    format: date
+  updatedAt:
+    type: string
+    format: date
+required:
+  - _id
+  - influencer
+  - chat
+  - user

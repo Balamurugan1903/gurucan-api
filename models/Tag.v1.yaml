@@ -3,5 +3,21 @@ type: object
 properties:
   _id:
     type: string
+  name:
+    type: string
+  description:
+    type: string
+  isDeleted:
+    type: boolean
+  for:
+    type: string
+  type:
+    type: string
+  createdAt:
+    type: string
+    format: date
+  updatedAt:
+    type: string
+    format: date
   '':
     type: string

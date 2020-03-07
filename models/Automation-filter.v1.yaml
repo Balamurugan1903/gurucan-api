@@ -1,0 +1,6 @@
+title: Automation filter
+type: object
+properties:
+  id:
+    type: string
+description: A filter to query users

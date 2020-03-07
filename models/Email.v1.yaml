@@ -3,3 +3,33 @@ type: object
 properties:
   _id:
     type: string
+  influencer:
+    $ref: ./Influencer.v1.yaml
+  title:
+    type: string
+  blocks:
+    type: array
+    items:
+      $ref: ''
+  accent_color:
+    type: string
+  background_color:
+    type: string
+  text_color:
+    type: string
+  accent_text_color:
+    type: string
+  type:
+    type: string
+  status:
+    type: string
+    enum:
+      - sent
+      - live
+      - deleted
+  createdAt:
+    type: string
+  updatedAt:
+    type: string
+  '':
+    type: string

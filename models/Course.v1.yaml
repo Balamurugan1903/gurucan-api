@@ -46,3 +46,4 @@ properties:
     $ref: ./Email.v1.yaml
   paymentEmail:
     $ref: ./Email.v1.yaml
+description: 'Course is a high - level model for Gurucan content. It can be a Course, a Challenge or a Menu.'

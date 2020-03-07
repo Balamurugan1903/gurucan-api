@@ -220,11 +220,137 @@ paths:
                       - ok
       description: Delete a chat message
       requestBody: {}
+  '/admin/users/{user_id}/grant-access':
+    parameters:
+      - schema:
+          type: string
+        name: user_id
+        in: path
+        required: true
+    post:
+      summary: Grant access
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum:
+                      - ok
+                  updateStatus:
+                    type: string
+      operationId: post-admin-users-user_id-grant-access
+      description: 'Grant user access to particular courses/bundles, or othe purchaseable items.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                item:
+                  type:
+                    - string
+                    - object
+                  required:
+                    - module
+                    - refPath
+                    - _id
+                  properties:
+                    module:
+                      type: string
+                      description: 'course, chat, bundle or plan'
+                      enum:
+                        - course
+                        - chat
+                        - bundle
+                        - plan
+                    refPath:
+                      type: string
+                      description: 'Course, Chat, Bundle or Plan'
+                      enum:
+                        - Course
+                        - Chat
+                        - Bundle
+                        - Plan
+                    _id:
+                      type: string
+                      description: "Item that you'd like to give access to \"_id\""
+                    meta:
+                      type: object
+                      description: |
+                        Reserved for later
+                sendPaymentEmail:
+                  type: boolean
+                  default: false
+                  description: Whether send the payment email attached to thtis item or not. By deafult is false
+              required:
+                - item
+        description: ''
+  '/admin/emails/{email_id}/broadcast':
+    parameters:
+      - schema:
+          type: string
+        name: email_id
+        in: path
+        required: true
+    post:
+      summary: Broadcast an email
+      tags: []
+      responses: {}
+      operationId: post-admin-emails-email_id-broadcast
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Use this to send a test email to a single address
+                queries:
+                  type: string
+                  description: Not documented yet
+        description: "Please don't use it without \"email\" param until this is documented fully"
+  '/chats/{chat_id}':
+    parameters:
+      - schema:
+          type: string
+        name: chat_id
+        in: path
+        required: true
+    post:
+      summary: Post a message to a chat
+      tags: []
+      responses: {}
+      operationId: post-chats-chat_id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                attachments:
+                  type: array
+                  items:
+                    type: object
 components:
   schemas: {}
   securitySchemes:
     jwt_token:
-      name: '{$$.env.jwt_token}'
+      name: jwt_token
       type: apiKey
       in: header
       description: "You'll get this token after login"
+    gc_api_key:
+      name: gc_api_key
+      type: apiKey
+      in: header
+      description: Use gc_api_key as a body param. You can get your API key from the admin panel.

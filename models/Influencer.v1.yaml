@@ -4,5 +4,3 @@ description: Influencer is the model of your school. It containes all the main s
 properties:
   _id:
     type: string
-  '':
-    type: string

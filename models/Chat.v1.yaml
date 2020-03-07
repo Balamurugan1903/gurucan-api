@@ -3,5 +3,41 @@ type: object
 properties:
   _id:
     type: string
-  '':
+  influencer:
+    $ref: ./Influencer.v1.yaml
+  title:
     type: string
+  image:
+    type: string
+  isDeleted:
+    type: boolean
+  participants:
+    type: array
+    items:
+      $ref: ./User.v1.yaml
+  createdAt:
+    type: string
+    format: date
+  updatedAt:
+    type: string
+    format: date
+  type:
+    type: string
+    enum:
+      - pm
+      - admin_announcements
+      - webinar
+  private:
+    type: boolean
+  lastMessage:
+    $ref: ./Message.v1.yaml
+  report:
+    type: boolean
+  paidUntil:
+    type: string
+    format: date
+  pushEnabled:
+    type: boolean
+    default: false
+    description: Are push notifications enabled for everyone in this chat
+description: Chats contain messages and can be standalone or attached to a Report
