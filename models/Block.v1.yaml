@@ -1,0 +1,6 @@
+title: Block
+type: object
+properties:
+  id:
+    type: string
+description: "A block is a basically a building block of all the content you've got on Gurucan."

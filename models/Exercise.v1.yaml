@@ -1,7 +1,70 @@
 title: Exercise
 type: object
+description: ''
 properties:
   _id:
     type: string
+  influencer:
+    $ref: ./Influencer.v1.yaml
+  title:
+    type: string
+  description:
+    type: string
+  img:
+    type: string
+  type:
+    type: string
+    enum:
+      - exercise
+      - task
+      - quiz
+      - training
+      - menu
+  status:
+    type: string
+    enum:
+      - deleted
+      - published
+      - draft
+  blocks:
+    type: array
+    items:
+      $ref: ''
+  isFree:
+    type: boolean
+  sort:
+    type: number
+  startDate:
+    type: string
+    format: date
+  finishDate:
+    type: string
+    format: date
+  answer:
+    type: string
+  reportRequired:
+    type: boolean
+  reportModeration:
+    type: string
+    enum:
+      - auto
+      - manual
+  tags:
+    type: array
+    items:
+      $ref: ./Tag.v1.yaml
+  points:
+    type: integer
+    description: Gamification points for completion
+  createdAt:
+    type: string
+    format: date
+  updatedAt:
+    type: string
+    format: date
   '':
     type: string
+required:
+  - _id
+  - influencer
+  - title
