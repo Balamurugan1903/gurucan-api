@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  title: Gurucan webhooks
+  version: '1.0'
+  description: This API describes webhooks that Gurucan send when some events happen in your online school
+servers:
+  - url: 'https://your.server.address'
+paths:
+  /tag_add:
+    post:
+      summary: Tag added webhook
+      operationId: post-tags
+      responses:
+        '200':
+          description: OK
+        '': {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source:
+                  $ref: ../models/User.v1.yaml
+                source_type:
+                  type: string
+                  default: user
+                  enum:
+                    - user
+                  example: user
+                action:
+                  type: string
+                  default: tag_add
+                  enum:
+                    - tag_add
+                  example: tag_add
+                influencer:
+                  type: string
+                data:
+                  type: object
+                  properties:
+                    tags:
+                      type: array
+                      items:
+                        type: string
+            examples: {}
+        description: ''
+    parameters: []
+  /tag_remove:
+    post:
+      summary: Tag removed webhook
+      tags: []
+      responses: {}
+      operationId: post-tag_remove
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source:
+                  $ref: ../models/User.v1.yaml
+                source_type:
+                  type: string
+                  default: user
+                  enum:
+                    - user
+                  example: user
+                action:
+                  type: string
+                  default: tag_remove
+                  enum:
+                    - tag_remove
+                  example: tag_remove
+                influencer:
+                  type: string
+                data:
+                  type: object
+                  properties:
+                    tags:
+                      type: array
+                      items:
+                        type: string
+        description: ''
+components:
+  schemas: {}
