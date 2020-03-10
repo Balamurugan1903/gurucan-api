@@ -5,6 +5,10 @@ info:
   contact:
     name: Dmitrii
     email: dmitrii@gurucan.com
+    url: gurucan.com
+  description: |-
+    https://github.com/jdponomarev/gurucan-api
+    help.gurucan.com
 servers:
   - url: 'https://{domain}.gurucan.com/api/'
     description: "Your school's endpoint"
@@ -349,8 +353,8 @@ components:
       type: apiKey
       in: header
       description: "You'll get this token after login"
-    gc_api_key:
-      name: gc_api_key
+    gc-api-key:
+      name: gc-api-key
       type: apiKey
       in: header
       description: Use gc_api_key as a body param. You can get your API key from the admin panel.
