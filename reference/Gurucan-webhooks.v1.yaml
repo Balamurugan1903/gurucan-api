@@ -43,7 +43,18 @@ paths:
                       type: array
                       items:
                         type: string
-            examples: {}
+            examples:
+              Example:
+                value:
+                  source_type: user
+                  source:
+                    _id: 507f1f77bcf86cd799439011
+                    email: test@test.com
+                  action: tag_add
+                  influencer: 507f1f77bcf86cd799439022
+                  data:
+                    tags:
+                      - 507f1f77bcf86cd799439033
         description: ''
     parameters: []
   /tag_remove:
@@ -81,6 +92,18 @@ paths:
                       type: array
                       items:
                         type: string
+            examples:
+              Example:
+                value:
+                  source_type: user
+                  source:
+                    _id: 507f1f77bcf86cd799439011
+                    email: test@test.com
+                  action: tag_remove
+                  influencer: 507f1f77bcf86cd799439022
+                  data:
+                    tags:
+                      - 507f1f77bcf86cd799439033
         description: ''
   /send_push:
     post:
@@ -119,6 +142,17 @@ paths:
                     title:
                       type: string
                       description: Push title
+            examples:
+              Example:
+                value:
+                  source_type: user
+                  source:
+                    _id: 507f1f77bcf86cd799439011
+                    email: test@test.com
+                  action: send_push
+                  influencer: 507f1f77bcf86cd799439022
+                  data:
+                    title: Push description title
         description: ''
   /sign_up:
     post:
@@ -153,11 +187,362 @@ paths:
             examples:
               Example:
                 value:
+                  source_type: user
                   source:
                     _id: 507f1f77bcf86cd799439011
                     email: test@test.com
                   action: sign_up
                   influencer: 507f1f77bcf86cd799439022
+        description: ''
+  /start_course:
+    post:
+      summary: 'Course started [webhook]'
+      tags: []
+      responses: {}
+      operationId: post-start_course
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source:
+                  $ref: ../models/User.v1.yaml
+                source_type:
+                  type: string
+                  default: user
+                  enum:
+                    - user
+                  example: user
+                target:
+                  $ref: ../models/Course.v1.yaml
+                target_type:
+                  type: string
+                  default: course
+                  enum:
+                    - course
+                  example: course
+                action:
+                  type: string
+                  default: start_course
+                  enum:
+                    - start_course
+                  example: start_course
+                influencer:
+                  $ref: ../models/Influencer.v1.yaml
+            examples:
+              Example:
+                value:
+                  source:
+                    _id: 507f1f77bcf86cd799439011
+                    email: test@test.com
+                  source_type: user
+                  action: start_course
+                  target_type: course
+                  target:
+                    _id: 507f1f77bcf86cd799439044
+                    title: My first course
+                  influencer: 507f1f77bcf86cd799439022
+                  data: {}
+        description: ''
+  /finish_exercise:
+    post:
+      summary: 'Exercise finished [webhook]'
+      tags: []
+      responses: {}
+      operationId: post-finish_exercise
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source_type:
+                  type: string
+                  default: user
+                  enum:
+                    - user
+                  example: user
+                source:
+                  $ref: ../models/User.v1.yaml
+                target_type:
+                  type: string
+                  default: exercise
+                  enum:
+                    - exercise
+                  example: exercise
+                target:
+                  $ref: ../models/Exercise.v1.yaml
+                action:
+                  type: string
+                  default: finish_exercise
+                  enum:
+                    - finish_exercise
+                  example: finish_exercise
+                influencer:
+                  type: string
+            examples:
+              Example:
+                value:
+                  source:
+                    _id: 507f1f77bcf86cd799439011
+                    email: test@test.com
+                  source_type: user
+                  action: start_course
+                  target_type: exercise
+                  target:
+                    _id: 507f1f77bcf86cd799439066
+                    title: My first exercise
+                  influencer: 507f1f77bcf86cd799439022
+                  data: {}
+  /finish_course:
+    post:
+      summary: 'Course finished [webhook]'
+      tags: []
+      responses: {}
+      operationId: post-finish_course
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source_type:
+                  type: string
+                  default: user
+                  enum:
+                    - user
+                  example: user
+                source:
+                  $ref: ../models/User.v1.yaml
+                target_type:
+                  type: string
+                  default: course
+                  enum:
+                    - course
+                  example: course
+                target:
+                  $ref: ../models/Course.v1.yaml
+                action:
+                  type: string
+                  default: finish_course
+                  enum:
+                    - finish_course
+                  example: finish_course
+                influencer:
+                  type: string
+            examples:
+              Example:
+                value:
+                  source:
+                    _id: 507f1f77bcf86cd799439011
+                    email: test@test.com
+                  source_type: user
+                  action: finish_course
+                  target_type: course
+                  target:
+                    _id: 507f1f77bcf86cd799439044
+                    title: My first course
+                  influencer: 507f1f77bcf86cd799439022
+                  data: {}
+  /sign_in:
+    post:
+      summary: 'User signed in [webhook]'
+      tags: []
+      responses: {}
+      operationId: post-sign_in
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source_type:
+                  type: string
+                  default: user
+                  enum:
+                    - user
+                  example: user
+                source:
+                  $ref: ../models/User.v1.yaml
+                action:
+                  type: string
+                  default: sign_in
+                  enum:
+                    - sign_in
+                  example: sign_in
+                influencer:
+                  type: string
+            examples:
+              Example:
+                value:
+                  source:
+                    _id: 507f1f77bcf86cd799439011
+                    email: test@test.com
+                  source_type: user
+                  action: finish_course
+                  influencer: 507f1f77bcf86cd799439022
+  /forgot_password:
+    post:
+      summary: 'User recovered password [webhook]'
+      tags: []
+      responses: {}
+      operationId: post-forgot_password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source:
+                  $ref: ../models/User.v1.yaml
+                source_type:
+                  type: string
+                  default: user
+                  enum:
+                    - user
+                  example: user
+                action:
+                  type: string
+                  default: forgot_password
+                  enum:
+                    - forgot_password
+                  example: forgot_password
+                influencer:
+                  type: string
+            examples:
+              Example:
+                value:
+                  source:
+                    _id: 507f1f77bcf86cd799439011
+                    email: test@test.com
+                  source_type: user
+                  action: finish_course
+                  influencer: 507f1f77bcf86cd799439022
+  /purchase_product:
+    post:
+      summary: 'User purchased product / subscription [webhook]'
+      tags: []
+      responses: {}
+      operationId: post-purchase_product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source:
+                  $ref: ../models/User.v1.yaml
+                source_type:
+                  type: string
+                  default: user
+                  enum:
+                    - user
+                  example: user
+                target:
+                  $ref: ../models/Course.v1.yaml
+                target_type:
+                  type: string
+                  default: course
+                  enum:
+                    - course
+                    - chat
+                    - bundle
+                  example: course
+                action:
+                  type: string
+                  default: purchase_product
+                  enum:
+                    - purchase_subscription
+                    - purchase_product
+                  example: purchase_product
+                influencer:
+                  type: string
+                data:
+                  type: object
+                  properties:
+                    gateway:
+                      type: string
+                      default: tks
+                      enum:
+                        - tks
+                        - apple
+                        - google
+                        - fondy
+                        - stripe
+                        - kassa
+                        - sberbank
+                      example: tks
+            examples:
+              Example:
+                value:
+                  source:
+                    _id: 507f1f77bcf86cd799439011
+                    email: test@test.com
+                  source_type: user
+                  action: start_course
+                  target_type: course
+                  target:
+                    _id: 507f1f77bcf86cd799439044
+                    title: My first course
+                  influencer: 507f1f77bcf86cd799439022
+                  data: {}
+        description: ''
+  /send_email:
+    post:
+      summary: 'Email sent [webhook]'
+      tags: []
+      responses: {}
+      operationId: post-send_email
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source:
+                  $ref: ../models/User.v1.yaml
+                source_type:
+                  type: string
+                  default: user
+                  enum:
+                    - user
+                  example: user
+                target:
+                  $ref: ../models/Email.v1.yaml
+                target_type:
+                  type: string
+                  default: email
+                  enum:
+                    - email
+                  example: email
+                action:
+                  type: string
+                  default: send_email
+                  enum:
+                    - send_email
+                  example: send_email
+                influencer:
+                  type: string
+                data:
+                  type: object
+                  properties:
+                    subject:
+                      type: string
+            examples:
+              Example:
+                value:
+                  source:
+                    _id: 507f1f77bcf86cd799439011
+                    email: test@test.com
+                  source_type: user
+                  action: send_email
+                  target_type: email
+                  target:
+                    _id: 507f1f77bcf86cd799439088
+                    title: Welcome email
+                  influencer: 507f1f77bcf86cd799439022
+                  data: {}
         description: ''
 components:
   schemas: {}
