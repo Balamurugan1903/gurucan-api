@@ -21,3 +21,4 @@ properties:
     format: date
   '':
     type: string
+description: 'Tags can be applied to users, courses and exercises.'

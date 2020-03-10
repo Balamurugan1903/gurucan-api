@@ -3,4 +3,6 @@ type: object
 properties:
   id:
     type: string
-description: A filter to query users
+description: |-
+  A filter to query users.
+  Documentation is not ready yet.

@@ -1,5 +1,6 @@
 title: Chat
 type: object
+description: Chats contain messages and can be standalone or attached to a Report
 properties:
   _id:
     type: string
@@ -40,4 +41,3 @@ properties:
     type: boolean
     default: false
     description: Are push notifications enabled for everyone in this chat
-description: Chats contain messages and can be standalone or attached to a Report

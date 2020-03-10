@@ -63,3 +63,4 @@ properties:
 required:
   - _id
   - email
+description: User model keeps everything about your students.
