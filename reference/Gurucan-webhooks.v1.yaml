@@ -8,7 +8,7 @@ servers:
 paths:
   /tag_add:
     post:
-      summary: Tag added webhook
+      summary: 'Tag added [webhook]'
       operationId: post-tags
       responses:
         '200':
@@ -48,7 +48,7 @@ paths:
     parameters: []
   /tag_remove:
     post:
-      summary: Tag removed webhook
+      summary: 'Tag removed [webhook]'
       tags: []
       responses: {}
       operationId: post-tag_remove
@@ -81,6 +81,83 @@ paths:
                       type: array
                       items:
                         type: string
+        description: ''
+  /send_push:
+    post:
+      summary: 'Push notification sent [webhook]'
+      operationId: post-send_push
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source:
+                  $ref: ../models/User.v1.yaml
+                source_type:
+                  type: string
+                  default: user
+                  enum:
+                    - user
+                  example: user
+                action:
+                  type: string
+                  default: send_push
+                  enum:
+                    - send_push
+                  example: send_push
+                influencer:
+                  type: string
+                data:
+                  type:
+                    - string
+                    - object
+                  properties:
+                    title:
+                      type: string
+                      description: Push title
+        description: ''
+  /sign_up:
+    post:
+      summary: 'Student sign up [webhook]'
+      operationId: post-sign_up
+      responses:
+        '200':
+          description: OK
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source:
+                  $ref: ../models/User.v1.yaml
+                source_type:
+                  type: string
+                  default: user
+                  enum:
+                    - user
+                  example: user
+                action:
+                  type: string
+                  default: sign_up
+                  enum:
+                    - sign_up
+                  example: sign_up
+                influencer:
+                  type: string
+            examples:
+              Example:
+                value:
+                  source:
+                    _id: 507f1f77bcf86cd799439011
+                    email: test@test.com
+                  action: sign_up
+                  influencer: 507f1f77bcf86cd799439022
         description: ''
 components:
   schemas: {}
