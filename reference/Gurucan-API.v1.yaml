@@ -224,13 +224,8 @@ paths:
                       - ok
       description: Delete a chat message
       requestBody: {}
-  '/admin/users/{user_id}/grant-access':
-    parameters:
-      - schema:
-          type: string
-        name: user_id
-        in: path
-        required: true
+  /admin/users/grant-access:
+    parameters: []
     post:
       summary: Grant access
       tags: []
@@ -292,6 +287,13 @@ paths:
                   type: boolean
                   default: false
                   description: Whether send the payment email attached to thtis item or not. By deafult is false
+                _id:
+                  type: string
+                  description: User _id (required if no email is passed)
+                email:
+                  type: string
+                  description: |
+                    User email (required if no _id is passed)
               required:
                 - item
         description: ''
