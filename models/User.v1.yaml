@@ -2,6 +2,7 @@ title: User
 type: object
 x-examples:
   example-1: {}
+description: User model keeps everything about your students.
 properties:
   _id:
     type: string
@@ -46,6 +47,7 @@ properties:
           type: string
   meta:
     type: object
+    description: Any additional info
   city:
     type: string
   instagram:
@@ -63,4 +65,3 @@ properties:
 required:
   - _id
   - email
-description: User model keeps everything about your students.
