@@ -113,6 +113,13 @@ paths:
                 password:
                   type: string
                   description: "User password. Is automatically generated if it's not passed."
+                meta:
+                  type: object
+                  description: Any additional poperties
+                noSignupEmail:
+                  type: boolean
+                  description: "If you don't need the default Gurucan signup email. Be careful as it contains login details"
+                  default: 'false'
               required:
                 - email
             examples:
