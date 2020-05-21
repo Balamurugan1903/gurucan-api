@@ -1,4 +1,5 @@
 const axios = require('axios');
+
 const api_url = 'https://{YOURDOMAIN}.gurucan.com/api/';
 const api_key = 'API_KEY';
 
@@ -32,9 +33,9 @@ instance({
 })
 
 
-//Provide access to a course
+//Granting access to a course
 instance({
-    url:`/admin/users/${user_id}/grant-access`,
+    url:`/admin/users/grant-access`,
     method:"POST",
     data:{
         item:{
@@ -42,7 +43,9 @@ instance({
             module:"course",
             _id: course_id
         },
-        sendPaymentEmail:true
+        sendPaymentEmail:true,
+        //email: user_email,
+        //_id : user_id
     }
 })
 .then(function (response) {
