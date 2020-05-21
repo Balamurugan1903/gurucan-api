@@ -10,7 +10,7 @@ properties:
   blocks:
     type: array
     items:
-      $ref: ''
+      $ref: ./Block.v1.yaml
   accent_color:
     type: string
   background_color:

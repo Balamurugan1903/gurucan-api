@@ -29,7 +29,7 @@ properties:
   blocks:
     type: array
     items:
-      $ref: ''
+      $ref: ./Block.v1.yaml
   isFree:
     type: boolean
   sort:

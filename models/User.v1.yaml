@@ -17,7 +17,7 @@ properties:
   tags:
     type: array
     items:
-      $ref: ''
+      $ref: ./Tag.v1.yaml
   status:
     type: string
     enum:
