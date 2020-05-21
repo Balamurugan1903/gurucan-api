@@ -31,7 +31,7 @@ $coursesRequest = $client->request('POST','/api/admin/users/grant-access',[
     'json' => array(
         'item' => array(
             'refPath'=>"Course",
-            '_id'=> "5eac335d325f391979aa5f7f"
+            '_id'=> $course_id
         ),
         'sendPaymentEmail' => true,
         'email'=>"user@example.com"
