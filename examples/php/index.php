@@ -59,7 +59,7 @@ echo "TAG CREATED ".$tagRequest->getBody()."\n\n\n";
 $userTagRequest = $client->request('POST','/api/admin/users/'.$user_id,[
     'headers'=>$auth_headers,
     'json'=>array(
-        'tag'=>array($tag_id)
+        'tags'=>array($tag_id)
     )
 ]);
 echo "TAG ADDED ".$userTagRequest->getBody()."\n\n\n";
